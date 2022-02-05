@@ -63,4 +63,25 @@ public class PayrollOperation {
         }
         return e;
     }
+    /*
+     * readDataByName method to get data from employee_service table by giving particular name.
+     * @param Connection object and name
+     * @return EmployeePayrollData object which contains data for given user.
+     * Getting data for given user.
+     * */
+    public static EmployeePayrollData readDataByName(Connection con,String name)
+    {
+        try {
+            //elect query to get data by passing name para using prepared statement
+            pstmt=con.prepareStatement("select * from employee_payroll where name=?");
+            pstmt.setString(1,name);
+            rs=pstmt.executeQuery();
+            while(rs.next()) {
+                e=new EmployeePayrollData(rs.getInt(1), rs.getString(2), rs.getDouble(6));
+            }
+        } catch (SQLException e) {
+            System.out.println("Invalid name. Please enter correct name.");
+        }
+        return e;
+    }
 }

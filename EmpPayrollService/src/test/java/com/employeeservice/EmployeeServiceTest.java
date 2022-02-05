@@ -46,4 +46,13 @@ public class EmployeeServiceTest {
       EmployeePayrollData e= EmployeePayrollService.updateEmployeeData(DB_IO);
       Assertions.assertEquals(300000,e.getBasicPay());
     }
+    @Test
+    public void whenGivingName_shouldRetiveDataFromDB_andMatchToExpected()
+    {
+        EmployeePayrollData e= EmployeePayrollService.getDataByName(DB_IO,"Bill");
+        Assertions.assertEquals("Bill",e.getName());
+        Assertions.assertEquals(1,e.getId());
+        Assertions.assertEquals(1000000,e.getBasicPay());
+    }
+
 }

@@ -119,4 +119,17 @@ public class EmployeePayrollService {
             e=PayrollOperation.updateData(con);
         return e;
     }
+    /*
+     * getDataByName method to retrive particular employee's data .
+     * @param IOService obj and employee's Name STRING
+     * @return EmployeePayrollData object which contains given employee's data.
+     * */
+    public static EmployeePayrollData getDataByName(IOService ioService,String name)
+    {
+        EmployeePayrollData e=null;
+        //checking if it is DB_IO and calling readDataByName method by passing connection object.
+        if(ioService.equals(IOService.DB_IO))
+            e= PayrollOperation.readDataByName(con,name);
+        return e;
+    }
 }
