@@ -61,5 +61,29 @@ public class EmployeeServiceTest {
         List<EmployeePayrollData> data= EmployeePayrollService.getEmployeesJoinedByDate(DB_IO,"2018-01-01","2019-12-01");
         Assertions.assertEquals(2,data.size());
     }
+	  @Test
+    public void shouldRetiveSalaryByGender_andMatchToExpected()
+    {
+        Map<String,Double> empSum= EmployeePayrollService.getSumOfSalByGender(DB_IO);
+        Assertions.assertEquals(1000000,empSum.get("M"));
+        Assertions.assertEquals(3300000,empSum.get("F"));
+
+        Map<String,Double> empAvg= EmployeePayrollService.getAvgOfSalByGender(DB_IO);
+        Assertions.assertEquals(1000000,empAvg.get("M"));
+        Assertions.assertEquals(1650000,empAvg.get("F"));
+
+        Map<String,Double> empMinSal= EmployeePayrollService.getMinOfSalByGender(DB_IO);
+        Assertions.assertEquals(1000000,empMinSal.get("M"));
+        Assertions.assertEquals(300000,empMinSal.get("F"));
+
+        Map<String,Double> empMaxSal= EmployeePayrollService.getMaxOfSalByGender(DB_IO);
+        Assertions.assertEquals(1000000,empMaxSal.get("M"));
+        Assertions.assertEquals(3000000,empMaxSal.get("F"));
+
+        Map<String,Double> empCount= EmployeePayrollService.getCountOfEmpByGender(DB_IO);
+        Assertions.assertEquals(1,empCount.get("M"));
+        Assertions.assertEquals(2,empCount.get("F"));
+
+    }
 
 }

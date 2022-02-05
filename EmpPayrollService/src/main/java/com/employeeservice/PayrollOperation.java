@@ -106,4 +106,94 @@ public class PayrollOperation {
         }
         return data;
     }
+	 /*
+     * sumOfSal method to get sum of salary of each gender type.
+     * @param Connection obj 
+     * @return MAP<String,Double> Gender,Sum of Salary.
+     * */
+    public static Map<String, Double> sumOfSal(Connection con) {
+        Map<String,Double> empSal=new HashMap<>();
+        try {
+            stmt=con.createStatement();
+            rs=stmt.executeQuery("select gender,sum(basic_pay) from employee_payroll group by gender");
+            while(rs.next()) {
+                empSal.put(rs.getString(1), rs.getDouble(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return empSal;
+    }
+	/*
+     * avgOfSal method to get avg of salary of each gender type.
+     * @param Connection obj 
+     * @return MAP<String,Double> Gender,Avg of Salary.
+     * */
+    public static Map<String, Double> avgOfSal(Connection con) {
+        Map<String,Double> empSal=new HashMap<>();
+        try {
+            stmt=con.createStatement();
+            rs=stmt.executeQuery("select gender,avg(basic_pay) from employee_payroll group by gender");
+            while(rs.next()) {
+                empSal.put(rs.getString(1), rs.getDouble(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return empSal;
+    }
+	/*
+     * minOfSal method to get min of salary of each gender type.
+     * @param Connection obj 
+     * @return MAP<String,Double> Gender,min of Salary.
+     * */
+    public static Map<String, Double> minOfSal(Connection con) {
+        Map<String,Double> empSal=new HashMap<>();
+        try {
+            stmt=con.createStatement();
+            rs=stmt.executeQuery("select gender,min(basic_pay) from employee_payroll group by gender");
+            while(rs.next()) {
+                empSal.put(rs.getString(1), rs.getDouble(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return empSal;
+    }
+	/*
+     * getMaxOfSalByGender method to get max of salary of each gender type.
+     * @param Connection obj 
+     * @return MAP<String,Double> Gender,Max of Salary.
+     * */
+    public static Map<String, Double> maxOfSal(Connection con) {
+        Map<String,Double> empMaxSal=new HashMap<>();
+        try {
+            stmt=con.createStatement();
+            rs=stmt.executeQuery("select gender,max(basic_pay) from employee_payroll group by gender");
+            while(rs.next()) {
+                empMaxSal.put(rs.getString(1), rs.getDouble(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return empMaxSal;
+    }
+	/*
+     * getCountOfEmpByGender method to get count of emp of each gender type.
+     * @param Connection obj 
+     * @return MAP<String,Double> Gender,count of emp.
+     * */
+    public static Map<String, Double> countOfEmp(Connection con) {
+        Map<String,Double> empCount=new HashMap<>();
+        try {
+            stmt=con.createStatement();
+            rs=stmt.executeQuery("select gender,count(id) from employee_payroll group by gender");
+            while(rs.next()) {
+                empCount.put(rs.getString(1), rs.getDouble(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return empCount;
+    }
 }

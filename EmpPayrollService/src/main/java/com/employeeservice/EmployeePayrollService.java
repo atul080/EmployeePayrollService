@@ -148,4 +148,70 @@ public class EmployeePayrollService {
             e= PayrollOperation.getEmployeesJoinedInGivenRange(con,start,end);
         return e;
     }
+	/*
+     * getSumOfSalByGender method to get sum of salary of each gender type.
+     * @param IOService obj DB_IO
+     * @return MAP<String,Double> Gender,Sum of Salary.
+     * */
+    public static Map<String,Double> getSumOfSalByGender(IOService ioService)
+    {
+        Map<String,Double> sum=null;
+		//checking if it is DB_IO and calling sumOfSal method by pasing Connection obj.
+        if(ioService.equals(IOService.DB_IO))
+            sum=PayrollOperation.sumOfSal(con);
+        return sum;
+    }
+	/*
+     * getAvgOfSalByGender method to get avg of salary of each gender type.
+     * @param IOService obj DB_IO
+     * @return MAP<String,Double> Gender,Avg of Salary.
+     * */
+    public static Map<String,Double> getAvgOfSalByGender(IOService ioService)
+    {
+        Map<String,Double> avg=null;
+		//checking if it is DB_IO and calling avgOfSal method by pasing Connection obj.
+        if(ioService.equals(IOService.DB_IO))
+            avg=PayrollOperation.avgOfSal(con);
+        return avg;
+    }
+	 /*
+     * getMinOfSalByGender method to get min of salary of each gender type.
+     * @param IOService obj DB_IO
+     * @return MAP<String,Double> Gender,min of Salary.
+     * */
+    public static Map<String,Double> getMinOfSalByGender(IOService ioService)
+    {
+        Map<String,Double> minSal=null;
+		//checking if it is DB_IO and calling minOfSal method by pasing Connection obj.
+        if(ioService.equals(IOService.DB_IO))
+            minSal=PayrollOperation.minOfSal(con);
+        return minSal;
+    }
+	/*
+     * getMaxOfSalByGender method to get max of salary of each gender type.
+     * @param IOService obj DB_IO
+     * @return MAP<String,Double> Gender,Max of Salary.
+     * */
+    public static Map<String,Double> getMaxOfSalByGender(IOService ioService)
+    {
+        Map<String,Double> maxSal= null;
+		//checking if it is DB_IO and calling maxOfSal method by pasing Connection obj.
+        if(ioService.equals(IOService.DB_IO))
+            maxSal=PayrollOperation.maxOfSal(con);
+        return maxSal;
+    }
+	/*
+     * getCountOfEmpByGender method to get count of emp of each gender type.
+     * @param IOService obj DB_IO
+     * @return MAP<String,Double> Gender,count of emp.
+     * */
+    public static Map<String,Double> getCountOfEmpByGender(IOService ioService)
+    {
+        Map<String,Double> empCount= null;
+		//checking if it is DB_IO and calling countOfEmp method by pasing Connection obj.
+        if(ioService.equals(IOService.DB_IO))
+            empCount=PayrollOperation.countOfEmp(con);
+        return empCount;
+    }
+
 }
