@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+    //object of DBConnection class
+    public static Connection con=DBConnectionClass.getConnection();
     //declarations
     public enum IOService {CONSOLE_IO, FILE_IO, DB_IO, REST_IO}
     private List<EmployeePayrollData> employeePayrollList;

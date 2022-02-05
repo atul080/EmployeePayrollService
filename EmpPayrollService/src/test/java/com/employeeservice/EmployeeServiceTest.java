@@ -35,4 +35,13 @@ public class EmployeeServiceTest {
         long entries = employeePayrollService.readEmployeePayrollData(FILE_IO);
         Assertions.assertEquals(3, entries);
     }
+
+    @Test
+    public void databaseConnectionTest() {
+            Connection c=DBConnectionClass.getConnection();
+            boolean chk=false;
+            if(c!=null)
+                chk=true;
+           Assertions.assertTrue(chk);
+    }
 }
