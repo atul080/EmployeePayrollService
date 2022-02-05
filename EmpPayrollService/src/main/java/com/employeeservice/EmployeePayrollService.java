@@ -59,4 +59,35 @@ public class EmployeePayrollService {
             }
         }
     }
+    /*
+     * countEntries method to get employee data count from file.
+     * @param IOService obj
+     * @return long COUNT of employees
+     * */
+    public long countEntries(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            return new EmployeePayrollFileIOService().countEntries();
+        }
+        return -2;
+    }
+    /*
+     * printData method to print employee data by reading from file.
+     * @param IOService obj FILE_IO
+     * */
+    public void printData(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            new EmployeePayrollFileIOService().printData();
+        }
+    }
+    /*
+     * readEmployeePayrollData method to read employee data from file.
+     * @param IOService obj FILE_IO
+     * @return long
+     * */
+    public long readEmployeePayrollData(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            return new EmployeePayrollFileIOService().countEntries();
+        }
+        return -2;
+    }
 }

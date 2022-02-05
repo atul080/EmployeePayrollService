@@ -32,7 +32,7 @@ public class EmployeePayrollFileIOService {
             System.out.println(e);
         }
     }
-	    /*
+    /*
      * countEntries method to get count of employees from File.
      * @return long COUNT of employees.
      * */
@@ -43,6 +43,15 @@ public class EmployeePayrollFileIOService {
             return -1;
         }
     }
-
-
+    /*
+     * printData method to print employee data by reading File.
+     * @return void.
+     * */
+    public void printData() {
+        try {
+            Files.lines(new File(PAYROLL_FILE_NAME).toPath()).forEach(System.out::println);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
 }
