@@ -55,4 +55,11 @@ public class EmployeeServiceTest {
         Assertions.assertEquals(1000000,e.getBasicPay());
     }
 
+    @Test
+    public void whenGivingStartEndDate_shouldRetiveDataFromDB_andMatchToExpected()
+    {
+        List<EmployeePayrollData> data= EmployeePayrollService.getEmployeesJoinedByDate(DB_IO,"2018-01-01","2019-12-01");
+        Assertions.assertEquals(2,data.size());
+    }
+
 }

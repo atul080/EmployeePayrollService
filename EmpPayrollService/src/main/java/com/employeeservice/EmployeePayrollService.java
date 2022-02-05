@@ -132,4 +132,20 @@ public class EmployeePayrollService {
             e= PayrollOperation.readDataByName(con,name);
         return e;
     }
+    /*
+     * getEmployeeJoinedByDate method to get employee data who joined in between given start and end date.
+     * @param IOService obj, STRING start date, String end date
+     * @return List of employees who joined in given date range.
+     * */
+    public static List<EmployeePayrollData> getEmployeesJoinedByDate(IOService ioService,String st,String en)
+    {
+        Date start = Date.valueOf(st);
+        Date end = Date.valueOf(en);
+        List<EmployeePayrollData> e = null;
+        //checking if it is DB_IO and calling getEmployeesJoindInGivenRange.
+        //passing connecton object, start date and end date.
+        if(ioService.equals(IOService.DB_IO))
+            e= PayrollOperation.getEmployeesJoinedInGivenRange(con,start,end);
+        return e;
+    }
 }

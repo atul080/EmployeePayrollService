@@ -84,4 +84,26 @@ public class PayrollOperation {
         }
         return e;
     }
+    /*
+     * getEmployeesJoinedInGivenRange method to get data from employee_service table who joined in between given date range.
+     * @param Connection object, start and end date.
+     * @return EmployeePayrollData List which contains data of user who joined between given date range.
+     * */
+    public static List<EmployeePayrollData> getEmployeesJoinedInGivenRange(Connection con,Date start,Date end)
+    {
+        List<EmployeePayrollData> data= new ArrayList<EmployeePayrollData>();
+        try {
+            pstmt=con.prepareStatement("select * from employee_payroll where start between ? and ?");
+            pstmt.setDate(1,start);
+            pstmt.setDate(2,end);
+            rs=pstmt.executeQuery();
+            while(rs.next()) {
+                e=new EmployeePayrollData(rs.getInt(1), rs.getString(2), rs.getDouble(6),rs.getDate(11));
+                data.add(e);
+            }
+        } catch (SQLException e) {
+            System.out.println("Invalid name. Please enter correct name.");
+        }
+        return data;
+    }
 }
