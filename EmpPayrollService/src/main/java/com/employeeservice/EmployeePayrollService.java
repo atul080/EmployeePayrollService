@@ -53,6 +53,11 @@ public class EmployeePayrollService {
     public void writeEmployeePayrollData(IOService ioService) {
         if (ioService.equals(IOService.CONSOLE_IO))
             System.out.println("\nWriting Employee Payroll Roaster to Console\n" + employeePayrollList);
+        else {
+            if (ioService.equals(IOService.FILE_IO)) {
+                new EmployeePayrollFileIOService().writeData(employeePayrollList);
+            }
+        }
     }
 
 
