@@ -92,4 +92,17 @@ public class EmployeePayrollService {
         }
         return -2;
     }
+    /*
+     * getEmployeeData method to get employee data from DB.
+     * @param IOService obj DB_IO
+     * @return List of all the user data present in DB
+     * */
+    public static List<EmployeePayrollData> getEmployeeData(IOService ioService)
+    {
+        List<EmployeePayrollData> emp = null;
+        //checking if it is DB_IO and calling readData method by passing connection object.
+        if(ioService.equals(IOService.DB_IO))
+            emp= PayrollOperation.readData(con);
+        return emp;
+    }
 }

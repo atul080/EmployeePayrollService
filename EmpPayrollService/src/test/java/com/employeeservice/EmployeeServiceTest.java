@@ -6,8 +6,6 @@
 package com.employeeservice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -37,11 +35,9 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    public void databaseConnectionTest() {
-            Connection c=DBConnectionClass.getConnection();
-            boolean chk=false;
-            if(c!=null)
-                chk=true;
-           Assertions.assertTrue(chk);
+    public void resultCount_shouldEqual_toActualDataSize()
+    {
+        List<EmployeePayrollData> data= EmployeePayrollService.getEmployeeData(DB_IO);
+        Assertions.assertEquals(3,data.size());
     }
 }
