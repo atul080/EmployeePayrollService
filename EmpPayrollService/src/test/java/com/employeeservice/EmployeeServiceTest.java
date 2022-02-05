@@ -40,4 +40,10 @@ public class EmployeeServiceTest {
         List<EmployeePayrollData> data= EmployeePayrollService.getEmployeeData(DB_IO);
         Assertions.assertEquals(3,data.size());
     }
+    @Test
+    public void updatedValue_shouldMatch_toActualDBReult()
+    {
+      EmployeePayrollData e= EmployeePayrollService.updateEmployeeData(DB_IO);
+      Assertions.assertEquals(300000,e.getBasicPay());
+    }
 }

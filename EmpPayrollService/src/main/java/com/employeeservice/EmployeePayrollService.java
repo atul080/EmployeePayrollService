@@ -105,4 +105,18 @@ public class EmployeePayrollService {
             emp= PayrollOperation.readData(con);
         return emp;
     }
+    /*
+     * updateEmployeeData method to update employee data by giving new values..
+     * @param IOService obj DB_IO
+     * calls updateData method.
+     * @return EmployeePayrollData object which contains updated values
+     * */
+    public static EmployeePayrollData updateEmployeeData(IOService ioService)
+    {
+        EmployeePayrollData e=null;
+        //checking if it is DB_IO and calling updateData method by passing connection object.
+        if(ioService.equals(IOService.DB_IO))
+            e=PayrollOperation.updateData(con);
+        return e;
+    }
 }
