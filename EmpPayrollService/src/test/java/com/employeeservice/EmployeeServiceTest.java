@@ -15,4 +15,16 @@ import static com.employeeservice.EmployeePayrollService.IOService.DB_IO;
 import static com.employeeservice.EmployeePayrollService.IOService.FILE_IO;
 
 public class EmployeeServiceTest {
+    @Test
+    public void givenEmployeesWhenWrittenToFileShouldMatchEmployeeEntries() {
+        EmployeePayrollData[] arrayOfEmps = {
+                new EmployeePayrollData(1, "3eff Bezos", 100000.0),
+                new EmployeePayrollData(2, "Bill Gates", 200000.0),
+                new EmployeePayrollData(3, "Mark Zuckerberg", 300000.0)};
+        EmployeePayrollService employeePayrollService =
+                new EmployeePayrollService(Arrays.asList(arrayOfEmps));
+        employeePayrollService.writeEmployeePayrollData(FILE_IO);
+        long entries = employeePayrollService.countEntries(FILE_IO);
+        Assertions.assertEquals(3, entries);
+    }
 }
